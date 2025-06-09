@@ -616,4 +616,7 @@ if __name__ == '__main__':
     face_api = FaceRecognitionAPI(args.mongodb_uri, args.db_name, args.collection)
     
    
-    app.run(host=args.host, port=args.port, debug=args.debug)
+    import os
+
+    port = int(os.environ.get("PORT", args.port))
+    app.run(host="0.0.0.0", port=port, debug=args.debug)
