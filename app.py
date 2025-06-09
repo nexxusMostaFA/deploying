@@ -35,9 +35,12 @@ class FaceRecognitionAPI:
         logger.info("Downloading and initializing AuraFace model...")
         try:
             snapshot_download(
-                "fal/AuraFace-v1",
-                local_dir="models/auraface",
-            )
+    "fal/AuraFace-v1",
+    local_dir="models/auraface",
+    cache_dir="/tmp/huggingface",  # railway allows writing to /tmp
+    revision="main"
+)
+
             
          
             self.face_app = FaceAnalysis(
