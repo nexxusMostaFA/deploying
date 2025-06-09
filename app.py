@@ -597,26 +597,9 @@ def verify():
     
     return jsonify({'status': 'error', 'message': 'Invalid file format. Please use JPG, JPEG or PNG'}), 400
 
-if __name__ == '__main__':
-  
-    import argparse
-    
-    parser = argparse.ArgumentParser(description='Face Recognition API')
-    parser.add_argument('--host', default='0.0.0.0', help='Host to run the server on')
-    parser.add_argument('--port', default=7000, type=int, help='Port to run the server on')
-    parser.add_argument('--mongodb-uri', 
-                        default="mongodb+srv://projectDB:PEyHwQ2fF7e5saEf@cluster0.43hxo.mongodb.net/",
-                        help='MongoDB connection URI')
-    parser.add_argument('--db-name', default="ta7t-bety", help='Database name')
-    parser.add_argument('--collection', default="face_id_images", help='Collection name')
-    parser.add_argument('--debug', action='store_true', help='Run in debug mode')
-    
-    args = parser.parse_args()
-    
-    face_api = FaceRecognitionAPI(args.mongodb_uri, args.db_name, args.collection)
-    
-   
+if __name__ == "__main__":
     import os
 
-    port = int(os.environ.get("PORT", args.port))
-    app.run(host="0.0.0.0", port=port, debug=args.debug)
+    port = int(os.environ.get("PORT", 7000))
+    app.run(host="0.0.0.0", port=port)
+
